@@ -1,12 +1,9 @@
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 :root {
   --primary: #fe2c55;
   --black: #000;
   --text-color: #333;
-
-  // Default layout
   --default-layout-header-height: 60px;
   --default-layout-width: 1150px;
   --white: #fff;
@@ -23,7 +20,7 @@ html {
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 1.6rem;
   line-height: 1.5;
   text-rendering: optimizespeed;
@@ -41,3 +38,5 @@ a[href] {
   color: var(--text-color);
   text-decoration: none;
 }
+
+/*# sourceMappingURL=GlobalStyles.css.map */
