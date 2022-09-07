@@ -12,7 +12,7 @@
   border: 1px solid transparent;
   user-select: none;
 
-  + .wrapper {
+  +.wrapper {
     margin-left: 8px;
   }
 
@@ -59,10 +59,12 @@
   }
 }
 
-.icon + .title, .title + .icon {
+.icon+.title,
+.title+.icon {
   margin-left: 8px;
 }
-.icon{
+
+.icon {
   display: inline-block;
   width: 24px;
   text-align: center;
@@ -77,4 +79,3 @@
   padding: 14px 16px;
   min-width: 140px;
 }
-

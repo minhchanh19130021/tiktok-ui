@@ -4,14 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleQuestion,
     faCircleXmark,
-    faCloudUpload,
     faCoins,
     faEarthAsia,
     faEllipsisVertical,
     faGear,
     faKeyboard,
     faMagnifyingGlass,
-    faMessage,
+    faPlus,
     faSignOut,
     faSpinner,
 } from '@fortawesome/free-solid-svg-icons';
@@ -26,6 +25,8 @@ import images from '~/assets/images';
 import AccountItem from '~/components/AccountItem';
 import Menu from '~/components/Popper/Menu';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
+import { MessageBoxIcon, MessageIcon } from '~/components/Icon';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -145,14 +146,19 @@ function Header() {
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
-                            <Tippy delay={[0, 200]} content="Tải Video" placement="bottom">
+                            <Button outline leftIcon={<FontAwesomeIcon icon={faPlus} />} className={cx('')}>
+                                Tải lên
+                            </Button>
+                            <Tippy content="Tin nhắn" placement="bottom">
                                 <button className={cx('actions-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                    <MessageIcon />
                                 </button>
                             </Tippy>
-                            {/* <button className={cx('actions-btn')}>
-                                <FontAwesomeIcon icon={faMessage} />
-                            </button> */}
+                            <Tippy content="Hộp thư" placement="bottom">
+                                <button className={cx('actions-btn')}>
+                                    <MessageBoxIcon />
+                                </button>
+                            </Tippy>
                         </>
                     ) : (
                         <>
@@ -162,8 +168,10 @@ function Header() {
                     )}
                     <Menu items={currentUser ? USER_MENU : MENU_ITEMS}>
                         {currentUser ? (
-                            <img className={cx('user-avatar')}
-                                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/2dbb398ac36c1b925d01ac022306b79f~c5_100x100.jpeg?x-expires=1662696000&x-signature=buYMG%2FZxPcMtluQAguSkFjePzfI%3D" alt="avatar-user" />
+                            <Image className={cx('user-avatar')}
+                                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/2dbb398ac36c1b925d01ac022306b79f~c5_100x100.jpeg?x-expires=1662696000&x-signature=buYMG%2FZxPcMtluQAguSkFjePzfI%3D" alt="avatar-user"
+                                fallback="https://fullstack.edu.vn/static/media/f8-icon.18cd71cfcfa33566a22b.png"
+                            />
                         ) : (
                             <button className={cx('more-btn')}>
                                 <FontAwesomeIcon icon={faEllipsisVertical} />
