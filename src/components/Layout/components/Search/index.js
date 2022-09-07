@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from 'react';
+import * as searchService from '~/apiServices/searchServices';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -11,7 +13,6 @@ import 'tippy.js/dist/tippy.css'
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import styles from './Search.module.scss';
 import AccountItem from '~/components/AccountItem';
-import { useEffect, useRef, useState } from 'react';
 import { useDebounce } from '~/hook';
 
 const cx = classNames.bind(styles);
@@ -23,35 +24,46 @@ function Search() {
     const debounce = useDebounce(searchValue, 500)
 
     const inputRef = useRef();
+
     useEffect(() => {
         if (!debounce.trim()) {
             setSearchResult([])
             return;
         }
         setLoading(true);
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounce)}&type=less`)
-            .then(response => response.json())
-            .then(response => {
-                setSearchResult(response.data);
-                setLoading(false);
-                console.log(response.data);
-            })
-            .catch(() => {
-                setLoading(false)
-            })
+
+        const fetchApi = async () => {
+            setLoading(true);
+            const result = await searchService.search(debounce);
+            setSearchResult(result);
+            setLoading(false);
+        };
+        fetchApi();
     }, [debounce]);
 
     const handleHideResult = () => {
         setShowResults(false);
     }
+
     const handleClear = () => {
         setSearchValue('');
         setSearchResult([]);
         inputRef.current.focus();
-    }
+    };
+
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+        if (!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue);
+        }
+    };
+
+
+
     return (
         <HeadlessTippy
             interactive
+            appendTo={() => document.body}
             visible={showResults && searchResult.length > 0}
             render={(attrs) => (
                 <div className={cx('search-result')} tabIndex="-1" {...attrs}>
@@ -75,7 +87,7 @@ function Search() {
                     value={searchValue}
                     placeholder="Tìm kiếm tài khoản hoặc video"
                     spellCheck={false}
-                    onChange={e => setSearchValue(e.target.value)}
+                    onChange={handleChange}
                     onFocus={() => setShowResults(true)}
                 />
                 {!!searchValue && !loading && (
@@ -90,7 +102,7 @@ function Search() {
                 )}
 
 
-                <button className={cx('search-btn')}>
+                <button className={cx('search-btn')} onMouseDown={e => e.preventDefault()}>
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
             </div>

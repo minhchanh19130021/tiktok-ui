@@ -27,6 +27,9 @@ import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { MessageBoxIcon, MessageIcon } from '~/components/Icon';
 import Image from '~/components/Image';
 import Search from '../Search';
+import { Link } from 'react-router-dom';
+import routesConfig from "~/config/routes";
+
 
 const cx = classNames.bind(styles);
 
@@ -38,6 +41,139 @@ const MENU_ITEMS = [
             title: 'Language',
             data: [
                 {
+                    type: 'language',
+                    code: 'en',
+                    title: 'Tiếng Anh',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'hn',
+                    title: 'Tiếng Hàn',
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'Tiếng Anh',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'hn',
+                    title: 'Tiếng Hàn',
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'Tiếng Anh',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'hn',
+                    title: 'Tiếng Hàn',
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'Tiếng Anh',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'hn',
+                    title: 'Tiếng Hàn',
+                }, {
+                    type: 'language',
+                    code: 'en',
+                    title: 'Tiếng Anh',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'hn',
+                    title: 'Tiếng Hàn',
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'Tiếng Anh',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'hn',
+                    title: 'Tiếng Hàn',
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'Tiếng Anh',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'hn',
+                    title: 'Tiếng Hàn',
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'Tiếng Anh',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'hn',
+                    title: 'Tiếng Hàn',
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'Tiếng Anh',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'hn',
+                    title: 'Tiếng Hàn',
+                }, {
                     type: 'language',
                     code: 'en',
                     title: 'Tiếng Anh',
@@ -105,7 +241,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <img src={images.logo} alt="Tiktok" />
+                <Link to={routesConfig.home} className={cx('logo-link')}>
+                    <img src={images.logo} alt="Tiktok" />
+                </Link>
 
                 <Search />
 
