@@ -1,5 +1,5 @@
 function Following() {
-    return <h1>Following Pages</h1>
+    return <h1>Trang theo dõi</h1>
 }
 
 export default Following

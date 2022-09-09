@@ -2,7 +2,7 @@
 function Upload() {
     return (
         <div className="content">
-            <h1>Upload Pages</h1>
+            <h1>Trang tải lên</h1>
         </div>
     )
 }

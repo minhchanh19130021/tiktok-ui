@@ -1,5 +1,5 @@
 function Search() {
-    return <h1>Seach Page</h1>
+    return <h1>Trang tìm kiếm</h1>
 }
 
 export default Search
